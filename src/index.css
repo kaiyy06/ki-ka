@@ -1,0 +1,137 @@
+:root {
+    /* Color Palette */
+    --color-cream: #F5F1ED;
+    --color-cream-dark: #EBE5DD;
+    --color-burgundy: #6B2C2C;
+    --color-burgundy-dark: #4A1E1E;
+    --color-green: #1F3A33;
+    --color-green-dark: #152823;
+    --color-pink: #F4E4E4;
+    --color-pink-dark: #E8D4D4;
+    --color-beige: #FBF8F5;
+    --color-text-dark: #2C2C2C;
+    --color-text-light: #666666;
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Container */
+    --container-max-width: 480px;
+    --container-padding: 1.5rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text-dark);
+    background-color: var(--color-beige);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+    width: 100%;
+    min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button {
+    font-family: var(--font-body);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+/* Button Styles */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.btn-burgundy {
+    background-color: var(--color-burgundy);
+    color: white;
+}
+
+.btn-burgundy:hover {
+    background-color: var(--color-burgundy-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 44, 44, 0.3);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-burgundy);
+    border: 1.5px solid var(--color-burgundy);
+}
+
+.btn-outline:hover {
+    background-color: var(--color-burgundy);
+    color: white;
+}
+
+/* Section Spacing */
+.section {
+    padding: var(--spacing-2xl) 0;
+}
+
+.section-sm {
+    padding: var(--spacing-xl) 0;
+}
+
+/* Responsive Typography */
+@media (min-width: 768px) {
+    :root {
+        --container-max-width: 600px;
+        --container-padding: 2rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    :root {
+        --container-max-width: 720px;
+    }
+}

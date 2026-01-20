@@ -1,0 +1,71 @@
+.anthology {
+    background-color: var(--color-green);
+    color: white;
+}
+
+.anthology-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.anthology-title {
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-xs);
+    color: white;
+}
+
+.anthology-subtitle {
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.anthology-list {
+    max-width: 100%;
+}
+
+.anthology-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.anthology-item:last-child {
+    border-bottom: none;
+}
+
+.anthology-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) 0;
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.anthology-button:hover {
+    opacity: 0.8;
+}
+
+.anthology-content {
+    overflow: hidden;
+}
+
+.anthology-content p {
+    padding-bottom: var(--spacing-md);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 0.9375rem;
+}
+
+@media (min-width: 768px) {
+    .anthology-title {
+        font-size: 2rem;
+    }
+
+    .anthology-button {
+        font-size: 1.125rem;
+    }
+}
