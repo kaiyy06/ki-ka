@@ -31,7 +31,7 @@ export default function Header() {
             <div className="container header-inner">
                 <a href="#hero" className="header-brand" onClick={handleLinkClick}>
                     <Heart size={16} fill="var(--color-burgundy)" stroke="none" />
-                    <span>Our Story</span>
+                    <span>Kit-Kat</span>
                 </a>
 
                 <button

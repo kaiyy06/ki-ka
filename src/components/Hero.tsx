@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { Heart, ChevronDown } from 'lucide-react';
+import { HERO_IMAGE } from '../assets';
 import './Hero.css';
 
 export default function Hero() {
@@ -26,10 +27,7 @@ export default function Hero() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
-                    <img
-                        src="https://images.unsplash.com/photo-1518568814500-bf0f8d125f46?w=800&q=80"
-                        alt="Romantic couple"
-                    />
+                    <img src={HERO_IMAGE} alt="Our love story" />
                     <div className="image-overlay">
                         <motion.p
                             className="image-caption"
@@ -37,7 +35,7 @@ export default function Hero() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.9 }}
                         >
-                            A perfect moment ✦
+                            The Kiss that we want ✦
                         </motion.p>
                     </div>
                 </motion.div>

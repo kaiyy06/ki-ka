@@ -1,22 +1,5 @@
 import { useRef, useEffect, useCallback } from 'react';
-
-const IMAGE_IDS = [
-    '1518609878373-06d740f60d8b',
-    '1529333166437-7750a6dd5a70',
-    '1522673607200-164d1b6ce486',
-    '1516589091380-5d8e87df6999',
-    '1474552226712-ac0f0961a954',
-    '1519671282429-b44660ead0a2',
-    '1508214751196-bcfd4ca60f91',
-    '1521119989659-a83eee488004',
-    '1502823403499-6ccfcf4fb453',
-    '1541701494587-cb58502866ab',
-    '1520854221256-17451cc331bf',
-    '1513279922550-250d2fd73db0',
-    '1469371670807-013ccf25f16a',
-    '1516101922849-6e2f6d632dff',
-    '1536640712-4d4c36ff0e4e',
-];
+import { GALLERY_IMAGES } from '../assets';
 
 const AUTO_SCROLL_SPEED = 0.3;
 
@@ -42,11 +25,13 @@ export default function Gallery({ running }: GalleryProps) {
     const lastX = useRef(0);
     const velocity = useRef(0);
 
+    const imageCount = GALLERY_IMAGES.length;
+
     const animate = useCallback(() => {
         if (!stripRef.current) return;
         const cards = stripRef.current.children;
         const cardWidth = getCardWidth();
-        const totalSetWidth = IMAGE_IDS.length * cardWidth;
+        const totalSetWidth = imageCount * cardWidth;
 
         if (!isDragging.current) {
             targetScroll.current += velocity.current;
@@ -81,7 +66,7 @@ export default function Gallery({ running }: GalleryProps) {
         }
 
         rafRef.current = requestAnimationFrame(animate);
-    }, []);
+    }, [imageCount]);
 
     useEffect(() => {
         if (running) {
@@ -151,11 +136,11 @@ export default function Gallery({ running }: GalleryProps) {
     return (
         <div className="gallery-viewport" ref={viewportRef} id="viewport">
             <div className="strip-container" ref={stripRef} id="strip">
-                {IMAGE_IDS.map((id, index) => (
-                    <div className="card" key={id} data-index={index}>
+                {GALLERY_IMAGES.map((src, index) => (
+                    <div className="card" key={index} data-index={index}>
                         <div className="card-inner">
                             <img
-                                src={`https://images.unsplash.com/photo-${id}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80`}
+                                src={src}
                                 alt={`Memory ${index + 1}`}
                                 loading="lazy"
                             />

@@ -57,6 +57,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -158,6 +159,7 @@ a {
     url('https://www.transparenttextures.com/patterns/handmade-paper.png');
   position: relative;
   overflow: hidden;
+  overflow-x: clip;
   padding: var(--spacing-xl) 0;
 }
 

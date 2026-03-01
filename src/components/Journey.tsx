@@ -1,6 +1,7 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin } from 'lucide-react';
+import { JOURNEY_IMAGES } from '../assets';
 import './Journey.css';
 
 const journeySteps = [
@@ -9,21 +10,21 @@ const journeySteps = [
         title: 'Our First Date',
         date: 'Oct 2023',
         description: 'The day we met changed everything. Coffee turned into hours of conversation.',
-        image: 'https://images.unsplash.com/photo-1511376777868-611b54f68947?w=600&q=80',
+        image: JOURNEY_IMAGES.firstDate,
     },
     {
         id: 2,
         title: 'First Romantic Trip',
         date: 'Nov 2023',
         description: 'Our first trip together to the mountains. The memories we made will last forever.',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
+        image: JOURNEY_IMAGES.firstTrip,
     },
     {
         id: 3,
         title: 'Still Going Strong',
         date: 'Present',
         description: "Every day with you is a new adventure. I can't wait to see what comes next.",
-        image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80',
+        image: JOURNEY_IMAGES.present,
     },
 ];
 

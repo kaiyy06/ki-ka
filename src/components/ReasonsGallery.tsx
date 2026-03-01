@@ -1,12 +1,13 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { REASONS_IMAGES } from '../assets';
 import './ReasonsGallery.css';
 
 const reasons = [
-    { id: 1, image: 'https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=400&q=80', caption: 'Your adventurous spirit' },
-    { id: 2, image: 'https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=80', caption: 'Golden sunsets together' },
-    { id: 3, image: 'https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400&q=80', caption: 'Shared dreams' },
-    { id: 4, image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80', caption: 'Love for nature' },
+    { id: 1, image: REASONS_IMAGES[0], caption: 'Your adventurous spirit' },
+    { id: 2, image: REASONS_IMAGES[1], caption: 'Golden sunsets together' },
+    { id: 3, image: REASONS_IMAGES[2], caption: 'Shared dreams' },
+    { id: 4, image: REASONS_IMAGES[3], caption: 'Love for nature' },
 ];
 
 export default function ReasonsGallery() {
