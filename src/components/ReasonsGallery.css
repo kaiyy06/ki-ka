@@ -1,8 +1,9 @@
 .reasons {
-    background-color: var(--color-beige);
+    background-color: var(--color-cream);
 }
 
 .reasons-title {
+    font-family: var(--font-heading);
     font-size: 1.75rem;
     text-align: center;
     margin-bottom: var(--spacing-xl);
@@ -12,7 +13,9 @@
 .reasons-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 0.875rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .reason-card {
@@ -21,23 +24,39 @@
 }
 
 .reason-image {
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow: hidden;
     margin-bottom: var(--spacing-xs);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .reason-image img {
     width: 100%;
-    height: 180px;
+    height: 160px;
     object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.reason-card:hover .reason-image img {
+    transform: scale(1.05);
 }
 
 .reason-caption {
     text-align: center;
-    font-size: 0.875rem;
+    font-size: 0.8125rem;
     color: var(--color-text-light);
     font-weight: 500;
+    padding: 0 0.25rem;
+}
+
+@media (min-width: 480px) {
+    .reason-image img {
+        height: 180px;
+    }
+
+    .reasons-grid {
+        gap: 1rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -51,5 +70,9 @@
 
     .reason-image img {
         height: 220px;
+    }
+
+    .reason-caption {
+        font-size: 0.875rem;
     }
 }

@@ -9,30 +9,30 @@ const journeySteps = [
         title: 'Our First Date',
         date: 'Oct 2023',
         description: 'The day we met changed everything. Coffee turned into hours of conversation.',
-        image: 'https://images.unsplash.com/photo-1511376777868-611b54f68947?w=600&q=80'
+        image: 'https://images.unsplash.com/photo-1511376777868-611b54f68947?w=600&q=80',
     },
     {
         id: 2,
-        title: 'First Romantic',
+        title: 'First Romantic Trip',
         date: 'Nov 2023',
         description: 'Our first trip together to the mountains. The memories we made will last forever.',
-        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80'
+        image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80',
     },
     {
         id: 3,
-        title: 'Still Going',
+        title: 'Still Going Strong',
         date: 'Present',
-        description: 'Every day with you is a new adventure. I can\'t wait to see what comes next.',
-        image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80'
+        description: "Every day with you is a new adventure. I can't wait to see what comes next.",
+        image: 'https://images.unsplash.com/photo-1502082553048-f009c37129b9?w=600&q=80',
     },
 ];
 
 export default function Journey() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, margin: '-80px' });
 
     return (
-        <section className="journey section" ref={ref}>
+        <section className="journey section" id="journey" ref={ref}>
             <div className="container">
                 <motion.h2
                     className="journey-title"
@@ -53,7 +53,7 @@ export default function Journey() {
                             transition={{ duration: 0.6, delay: index * 0.2 }}
                         >
                             <div className="step-marker">
-                                <MapPin size={20} stroke="var(--color-burgundy)" />
+                                <MapPin size={18} stroke="var(--color-burgundy)" />
                             </div>
 
                             <div className="step-content">
@@ -63,9 +63,9 @@ export default function Journey() {
 
                                 <motion.div
                                     className="step-image"
-                                    whileHover={{ scale: 1.03 }}
+                                    whileHover={{ scale: 1.02 }}
                                 >
-                                    <img src={step.image} alt={step.title} />
+                                    <img src={step.image} alt={step.title} loading="lazy" />
                                 </motion.div>
                             </div>
                         </motion.div>

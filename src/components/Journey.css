@@ -3,6 +3,7 @@
 }
 
 .journey-title {
+    font-family: var(--font-heading);
     font-size: 1.75rem;
     text-align: center;
     margin-bottom: var(--spacing-xl);
@@ -11,6 +12,8 @@
 
 .journey-steps {
     position: relative;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .journey-step {
@@ -29,8 +32,8 @@
     position: absolute;
     left: -11px;
     top: 0;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     background-color: var(--color-cream);
     border-radius: 50%;
     display: flex;
@@ -52,28 +55,35 @@
 }
 
 .step-title {
-    font-size: 1.25rem;
+    font-family: var(--font-heading);
+    font-size: 1.125rem;
     margin-bottom: var(--spacing-xs);
     color: var(--color-text-dark);
 }
 
 .step-description {
-    font-size: 0.9375rem;
-    line-height: 1.6;
+    font-size: 0.875rem;
+    line-height: 1.7;
     color: var(--color-text-light);
     margin-bottom: var(--spacing-md);
 }
 
 .step-image {
-    border-radius: 0.75rem;
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
 
 .step-image img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+}
+
+@media (min-width: 480px) {
+    .step-image img {
+        height: 200px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -82,7 +92,11 @@
     }
 
     .step-title {
-        font-size: 1.5rem;
+        font-size: 1.375rem;
+    }
+
+    .step-description {
+        font-size: 0.9375rem;
     }
 
     .step-image img {

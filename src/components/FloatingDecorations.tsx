@@ -1,7 +1,11 @@
 import { useMemo } from 'react';
 
-const SYMBOLS = ['✦', '✧', '*', '﹡', '✻'];
-const COUNT = 35;
+const SYMBOLS = ['✦', '✧', '♡', '﹡', '✻'];
+
+function getCount() {
+    if (typeof window === 'undefined') return 20;
+    return window.innerWidth < 768 ? 15 : 30;
+}
 
 interface SymbolData {
     char: string;
@@ -14,13 +18,14 @@ interface SymbolData {
 
 export default function FloatingDecorations() {
     const symbols: SymbolData[] = useMemo(() => {
-        return Array.from({ length: COUNT }, () => ({
+        const count = getCount();
+        return Array.from({ length: count }, () => ({
             char: SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)],
             left: Math.random() * 100,
-            size: Math.random() * 14 + 8,
-            duration: Math.random() * 10 + 10,
-            delay: Math.random() * 10,
-            opacity: Math.random() * 0.4 + 0.1,
+            size: Math.random() * 12 + 8,
+            duration: Math.random() * 12 + 12,
+            delay: Math.random() * 12,
+            opacity: Math.random() * 0.3 + 0.08,
         }));
     }, []);
 

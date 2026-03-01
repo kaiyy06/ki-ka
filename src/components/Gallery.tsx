@@ -18,8 +18,14 @@ const IMAGE_IDS = [
     '1536640712-4d4c36ff0e4e',
 ];
 
-const CARD_WIDTH = 280;
-const AUTO_SCROLL_SPEED = 0.35;
+const AUTO_SCROLL_SPEED = 0.3;
+
+function getCardWidth() {
+    if (typeof window === 'undefined') return 240;
+    if (window.innerWidth < 480) return 200;
+    if (window.innerWidth < 768) return 240;
+    return 280;
+}
 
 interface GalleryProps {
     running: boolean;
@@ -30,18 +36,17 @@ export default function Gallery({ running }: GalleryProps) {
     const stripRef = useRef<HTMLDivElement>(null);
     const rafRef = useRef<number>(0);
 
-    /* Motion state kept in refs to avoid re-renders */
     const currentScroll = useRef(0);
     const targetScroll = useRef(0);
     const isDragging = useRef(false);
     const lastX = useRef(0);
     const velocity = useRef(0);
 
-    /* ── animation loop ─────────────────────────────── */
     const animate = useCallback(() => {
         if (!stripRef.current) return;
         const cards = stripRef.current.children;
-        const totalSetWidth = IMAGE_IDS.length * CARD_WIDTH;
+        const cardWidth = getCardWidth();
+        const totalSetWidth = IMAGE_IDS.length * cardWidth;
 
         if (!isDragging.current) {
             targetScroll.current += velocity.current;
@@ -52,19 +57,21 @@ export default function Gallery({ running }: GalleryProps) {
         currentScroll.current +=
             (targetScroll.current - currentScroll.current) * 0.1;
 
+        const vw = window.innerWidth;
+
         for (let i = 0; i < cards.length; i++) {
             const card = cards[i] as HTMLElement;
-            let virtualIndex = i * CARD_WIDTH - currentScroll.current;
+            let virtualIndex = i * cardWidth - currentScroll.current;
 
             while (virtualIndex < -totalSetWidth / 2) virtualIndex += totalSetWidth;
             while (virtualIndex > totalSetWidth / 2) virtualIndex -= totalSetWidth;
 
-            if (Math.abs(virtualIndex) < window.innerWidth) {
+            if (Math.abs(virtualIndex) < vw) {
                 card.style.display = 'block';
-                const progress = virtualIndex / (window.innerWidth / 1.5);
+                const progress = virtualIndex / (vw / 1.5);
                 const x = virtualIndex;
-                const z = -Math.pow(Math.abs(progress), 2) * 600;
-                const rotateY = progress * 35;
+                const z = -Math.pow(Math.abs(progress), 2) * (vw < 480 ? 300 : 600);
+                const rotateY = progress * (vw < 480 ? 25 : 35);
 
                 card.style.transform = `translateX(${x}px) translateZ(${z}px) rotateY(${rotateY}deg)`;
                 card.style.opacity = String(1 - Math.pow(Math.abs(progress), 3));
@@ -76,7 +83,6 @@ export default function Gallery({ running }: GalleryProps) {
         rafRef.current = requestAnimationFrame(animate);
     }, []);
 
-    /* ── start / stop animation ─────────────────────── */
     useEffect(() => {
         if (running) {
             rafRef.current = requestAnimationFrame(animate);
@@ -86,7 +92,6 @@ export default function Gallery({ running }: GalleryProps) {
         };
     }, [running, animate]);
 
-    /* ── pointer / touch events ─────────────────────── */
     useEffect(() => {
         const vp = viewportRef.current;
         if (!vp) return;
@@ -129,9 +134,9 @@ export default function Gallery({ running }: GalleryProps) {
         vp.addEventListener('mousedown', onMouseDown);
         window.addEventListener('mouseup', onMouseUp);
         window.addEventListener('mousemove', onMouseMove);
-        vp.addEventListener('touchstart', onTouchStart);
+        vp.addEventListener('touchstart', onTouchStart, { passive: true });
         window.addEventListener('touchend', onTouchEnd);
-        window.addEventListener('touchmove', onTouchMove);
+        window.addEventListener('touchmove', onTouchMove, { passive: true });
 
         return () => {
             vp.removeEventListener('mousedown', onMouseDown);
